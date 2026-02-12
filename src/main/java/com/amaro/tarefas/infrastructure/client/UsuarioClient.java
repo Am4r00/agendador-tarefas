@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @Component
 public interface UsuarioClient {
 
-    @GetMapping("/{email}")
+    @GetMapping("/usuario/{email}")
     UsuarioDTO buscarUsuario(@PathVariable String email,
                              @RequestHeader("Authorization") String token);
 }
