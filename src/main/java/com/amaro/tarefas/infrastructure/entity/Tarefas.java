@@ -18,6 +18,7 @@ public class Tarefas {
     private String id;
     private String nome;
     private String descricao;
+    private LocalDateTime dataEvento;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAlteracao;
     private String emailUsuario;
