@@ -3,6 +3,7 @@ package com.amaro.tarefas.controller;
 import com.amaro.tarefas.bussines.dto.TarefasDTO;
 import com.amaro.tarefas.bussines.mapper.TarefasMapper;
 import com.amaro.tarefas.bussines.service.TarefasService;
+import com.amaro.tarefas.infrastructure.enums.Status;
 import com.amaro.tarefas.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,5 +36,22 @@ public class TarefasController {
     @GetMapping()
     public ResponseEntity<List<TarefasDTO>> buscarTarefasPorData(@RequestHeader("Authorization")  String token){
         return ResponseEntity.ok(tarefasService.buscarTarefaPorEmail(token));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletarTarefaPorId(@RequestParam("id") String  id){
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<TarefasDTO> alterarStatusTarefa(@RequestParam("status") Status status,
+                                                          @RequestParam("id")String id){
+        return ResponseEntity.ok(tarefasService.alterarStatus(status, id));
+    }
+
+    @PutMapping
+    public ResponseEntity<TarefasDTO> alterarTarefa(@RequestBody TarefasDTO tarefasDTO,
+                                                    @RequestParam("id") String id){
+        return ResponseEntity.ok(tarefasService.atualizarTarefa(tarefasDTO, id));
     }
 }
