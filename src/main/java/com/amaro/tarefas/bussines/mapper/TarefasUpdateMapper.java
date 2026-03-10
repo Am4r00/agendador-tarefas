@@ -1,6 +1,6 @@
 package com.amaro.tarefas.bussines.mapper;
 
-import com.amaro.tarefas.bussines.dto.TarefasDTO;
+import com.amaro.tarefas.bussines.dto.out.TarefasDTO;
 import com.amaro.tarefas.infrastructure.entity.Tarefas;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

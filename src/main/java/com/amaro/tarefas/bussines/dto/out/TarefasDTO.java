@@ -1,4 +1,4 @@
-package com.amaro.tarefas.bussines.dto;
+package com.amaro.tarefas.bussines.dto.out;
 
 import com.amaro.tarefas.infrastructure.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
