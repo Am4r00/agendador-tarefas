@@ -1,6 +1,7 @@
 package com.amaro.tarefas.bussines.service;
 
-import com.amaro.tarefas.bussines.dto.TarefasDTO;
+import com.amaro.tarefas.bussines.dto.in.TarefasInDTO;
+import com.amaro.tarefas.bussines.dto.out.TarefasDTO;
 import com.amaro.tarefas.bussines.mapper.TarefasMapper;
 import com.amaro.tarefas.bussines.mapper.TarefasUpdateMapper;
 import com.amaro.tarefas.infrastructure.entity.Tarefas;
@@ -24,8 +25,10 @@ public class TarefasService {
     private final TarefasUpdateMapper tarefasUpdateMapper;
 
 
-    public TarefasDTO criarTarefa(String token, TarefasDTO tarefasDTO) {
+    public TarefasDTO criarTarefa(String token, TarefasInDTO dto) {
         String email = jwtUtil.extractUsername(token.substring(7));
+        TarefasDTO tarefasDTO = tarefasMapper.inParaTarefasDTO(dto);
+
         tarefasDTO.setDataCriacao(LocalDateTime.now());
         tarefasDTO.setStatusTarefa(Status.PENDENTE);
         tarefasDTO.setEmailUsuario(email);
