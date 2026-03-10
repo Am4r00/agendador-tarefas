@@ -1,10 +1,9 @@
 package com.amaro.tarefas.controller;
 
-import com.amaro.tarefas.bussines.dto.TarefasDTO;
-import com.amaro.tarefas.bussines.mapper.TarefasMapper;
+import com.amaro.tarefas.bussines.dto.in.TarefasInDTO;
+import com.amaro.tarefas.bussines.dto.out.TarefasDTO;
 import com.amaro.tarefas.bussines.service.TarefasService;
 import com.amaro.tarefas.infrastructure.enums.Status;
-import com.amaro.tarefas.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +21,8 @@ public class TarefasController {
 
     @PostMapping
     public ResponseEntity<TarefasDTO> criarTarefa(@RequestHeader("Authorization")  String token,
-                                                  @RequestBody TarefasDTO tarefasDTO){
-        return ResponseEntity.ok(tarefasService.criarTarefa(token,tarefasDTO));
+                                                  @RequestBody TarefasInDTO dto){
+        return ResponseEntity.ok(tarefasService.criarTarefa(token,dto));
     }
 
     @GetMapping("/eventos")
